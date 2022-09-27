@@ -9,6 +9,9 @@ import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
+//configurarion module
+import { Secret } from '../config/config.js'
+
 //import router
 
 import indexRouter from './routes/index.route.server.js'
@@ -27,7 +30,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../public')))
 app.use(
   session({
-    secret: 'My secret',
+    secret: Secret,
     saveUninitialized: false,
     resave: false,
   })
